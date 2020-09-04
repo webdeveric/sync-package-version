@@ -1,8 +1,19 @@
 {
   "name": "@webdeveric/sync-package-version",
   "version": "0.0.0",
-  "private": true,
   "description": "Use your package.json version number in other files",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webdeveric/sync-package-version.git"
+  },
+  "bugs": {
+    "url": "https://github.com/webdeveric/sync-package-version/issues"
+  },
+  "homepage": "https://github.com/webdeveric/sync-package-version/#readme",
   "bin": {
     "sync-package-version": "./bin/sync-package-version.js"
   },
@@ -13,17 +24,18 @@
   "scripts": {
     "test": "nyc mocha --colors",
     "test:report": "nyc --reporter=lcov mocha --colors",
-    "lint": "eslint ./bin ./src ./test --fix",
-    "start": "./bin/sync-package-version.js",
-    "version": "./bin/sync-package-version.js"
+    "lint": "eslint ./bin ./src ./test --fix"
   },
   "keywords": [
     "package.json",
     "version",
     "sync"
   ],
-  "author": "Eric King <eric@webdeveric.com>",
-  "license": "ISC",
+  "author": {
+    "email": "eric@webdeveric.com",
+    "name": "Eric King",
+    "url": "http://webdeveric.com/"
+  },
   "dependencies": {},
   "devDependencies": {
     "chai": "^4.2.0",
