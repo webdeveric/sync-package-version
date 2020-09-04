@@ -1,0 +1,36 @@
+{
+  "name": "@webdeveric/sync-package-version",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Use your package.json version number in other files",
+  "bin": {
+    "sync-package-version": "./bin/sync-package-version.js"
+  },
+  "files": [
+    "./bin",
+    "./src"
+  ],
+  "scripts": {
+    "test": "nyc mocha --colors",
+    "test:report": "nyc --reporter=lcov mocha --colors",
+    "lint": "eslint ./bin ./src ./test --fix",
+    "start": "./bin/sync-package-version.js",
+    "version": "./bin/sync-package-version.js"
+  },
+  "keywords": [
+    "package.json",
+    "version",
+    "sync"
+  ],
+  "author": "Eric King <eric@webdeveric.com>",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^7.8.1",
+    "eslint-config-webdeveric": "^0.7.0",
+    "mocha": "^8.1.3",
+    "mock-fs": "^4.13.0",
+    "nyc": "^15.1.0"
+  }
+}
