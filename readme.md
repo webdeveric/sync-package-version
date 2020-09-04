@@ -5,7 +5,7 @@
 ## Install
 
 ```shell
-npm i webdeveric/sync-package-version -D
+npm i @webdeveric/sync-package-version -D
 ```
 
 ## Usage
