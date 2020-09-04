@@ -1,6 +1,6 @@
 {
   "name": "@webdeveric/sync-package-version",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Use your package.json version number in other files",
   "publishConfig": {
     "access": "public"
