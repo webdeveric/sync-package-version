@@ -7,8 +7,8 @@
     "sync-package-version": "./bin/sync-package-version.js"
   },
   "files": [
-    "./bin",
-    "./src"
+    "bin",
+    "src"
   ],
   "scripts": {
     "test": "nyc mocha --colors",
