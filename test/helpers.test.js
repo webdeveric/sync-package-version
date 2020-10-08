@@ -4,6 +4,8 @@ const { expect } = require('chai');
 
 const {
   getAbsolutePaths,
+  getJsonIndentation,
+  getTrailingWhitespace,
   readJson,
   syncVersion,
   uniqueItems,
@@ -23,11 +25,36 @@ describe('getAbsolutePaths()', function() {
   });
 });
 
+describe('getJsonIndentation()', function() {
+  it('returns number of spaces', () => {
+    expect( getJsonIndentation('{\n "test": true }') ).to.equal( 1 );
+    expect( getJsonIndentation('{\n  "test": true }') ).to.equal( 2 );
+    expect( getJsonIndentation('{\n   "test": true }') ).to.equal( 3 );
+    expect( getJsonIndentation('{\n    "test": true }') ).to.equal( 4 );
+  });
+
+  it('returns space character', () => {
+    expect( getJsonIndentation('{\n\t"test": true }') ).to.equal('\t');
+    expect( getJsonIndentation('{\n\t\t"test": true }') ).to.equal('\t\t');
+  });
+
+  it('returns null when no spacing detected', () => {
+    expect( getJsonIndentation('{\n"test": true }') ).to.be.null;
+    expect( getJsonIndentation('{ "test": true }') ).to.be.null;
+  });
+});
+
+describe('getTrailingWhitespace()', function() {
+  it('returns a string containing the trailing whitespace', async () => {
+    expect( getTrailingWhitespace('{ "test": true }\n\n') ).to.equal('\n\n');
+  });
+});
+
 describe('readJson()', function() {
   it('returns json data', async () => {
-    const data = await readJson( path.join( __dirname, '../package.json') );
+    const json = await readJson( path.join( __dirname, '../package.json') );
 
-    expect( data ).to.be.instanceOf( Object );
+    expect( json.data ).to.be.instanceOf( Object );
   });
 });
 
@@ -35,7 +62,8 @@ describe('syncVersion()', function() {
   beforeEach(() => {
     mockFs({
       'package.json': JSON.stringify({ version: '1.0.0' }),
-      'manifest.json': JSON.stringify({ version: '0.1.0' }),
+      'manifest.json': JSON.stringify({ version: '0.1.0' }, null, 2) + '\n',
+      'example.json': JSON.stringify({ version: '0.1.0' }),
     });
   });
 
@@ -44,13 +72,11 @@ describe('syncVersion()', function() {
   });
 
   it('updates the version property in the file', async () => {
-    expect( (await readJson('manifest.json')).version ).to.equal('0.1.0');
-
-    const filename = await syncVersion('manifest.json', '1.0.0');
-
-    expect( filename ).to.equal('manifest.json');
-
-    expect( (await readJson('manifest.json')).version ).to.equal('1.0.0');
+    [ 'manifest.json', 'example.json' ].forEach( async file => {
+      expect( (await readJson( file )).data.version ).to.equal('0.1.0');
+      expect( await syncVersion( file, '1.0.0') ).to.equal( file );
+      expect( (await readJson( file )).data.version ).to.equal('1.0.0');
+    });
   });
 });
 

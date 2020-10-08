@@ -15,31 +15,54 @@ function getAbsolutePaths( files, cwd )
   );
 }
 
+function getJsonIndentation( contents )
+{
+  const matches = contents.match(/(?<=[{[]\n+)(?<spaces>[ \t]+)/);
+
+  if ( matches ) {
+    const { spaces } = matches.groups;
+
+    return /[ ]+/.test( spaces ) ? spaces.length : spaces;
+  }
+
+  return null;
+}
+
+function getTrailingWhitespace( contents )
+{
+  const matches = contents.match(/\s+$/s);
+
+  return matches ? matches[ 0 ] : '';
+}
+
 async function readJson( file )
 {
   const contents = await fs.promises.readFile( file, { encoding: 'utf8' });
 
-  return JSON.parse( contents );
+  return {
+    space: getJsonIndentation( contents ),
+    trailingWhitespace: getTrailingWhitespace( contents ),
+    data: JSON.parse( contents ),
+  };
 }
 
 async function syncVersion( file, version )
 {
-  const data = Object.assign(
-    await readJson( file ),
-    {
-      version,
-    },
-  );
+  const { data, space, trailingWhitespace } = await readJson( file );
 
-  const contents = JSON.stringify( data, null, 2 );
+  Object.assign( data, { version } );
 
-  await fs.promises.writeFile( file, `${contents}\n` );
+  const contents = JSON.stringify( data, null, space );
+
+  await fs.promises.writeFile( file, `${contents}${trailingWhitespace}` );
 
   return file;
 }
 
 module.exports = {
   getAbsolutePaths,
+  getJsonIndentation,
+  getTrailingWhitespace,
   readJson,
   syncVersion,
   uniqueItems,
