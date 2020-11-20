@@ -1,17 +1,16 @@
+'use strict';
+
 const fs = require('fs');
 const path = require('path');
 
-function uniqueItems( data )
-{
-  return [ ...new Set( data ) ];
-}
+const { uniqueItems } = require('@webdeveric/utils');
 
 function getAbsolutePaths( files, cwd )
 {
   return uniqueItems(
     files.map(
-      file => path.isAbsolute( file ) ? file : path.resolve( cwd, file )
-    )
+      file => path.isAbsolute( file ) ? file : path.resolve( cwd, file ),
+    ),
   );
 }
 
@@ -65,5 +64,4 @@ module.exports = {
   getTrailingWhitespace,
   readJson,
   syncVersion,
-  uniqueItems,
 };

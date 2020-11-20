@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+'use strict';
+
 const {
   getAbsolutePaths,
   syncVersion,
@@ -31,12 +33,12 @@ function run( files, version )
 run( filesToUpdate, PACKAGE_VERSION ).then(
   files => {
     files.forEach(
-      file => process.stdout.write(`${file}\n`)
+      file => process.stdout.write(`${file}\n`),
     );
   },
   error => {
     console.error( error );
 
     process.exit(1);
-  }
+  },
 );

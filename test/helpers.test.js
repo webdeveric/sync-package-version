@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 const mockFs = require('mock-fs');
 const { expect } = require('chai');
@@ -8,7 +10,6 @@ const {
   getTrailingWhitespace,
   readJson,
   syncVersion,
-  uniqueItems,
 } = require('../src/helpers.js');
 
 describe('getAbsolutePaths()', function() {
@@ -77,14 +78,5 @@ describe('syncVersion()', function() {
       expect( await syncVersion( file, '1.0.0') ).to.equal( file );
       expect( (await readJson( file )).data.version ).to.equal('1.0.0');
     });
-  });
-});
-
-describe('uniqueItems()', function() {
-  it('returns an array of unique items', () => {
-    const items = uniqueItems([ 'cat', 'cat', 'dog' ]);
-
-    expect( items.length ).to.equal( 2 );
-    expect( items ).to.include.members([ 'cat', 'dog' ]);
   });
 });
