@@ -37,12 +37,12 @@
     "url": "http://webdeveric.com/"
   },
   "dependencies": {
-    "@webdeveric/utils": "^0.2.0"
+    "@webdeveric/utils": "^0.3.0"
   },
   "devDependencies": {
     "@webdeveric/eslint-config": "^0.1.0",
     "chai": "^4.2.0",
-    "eslint": "^7.12.1",
+    "eslint": "^7.14.0",
     "mocha": "^8.2.1",
     "mock-fs": "^4.13.0",
     "nyc": "^15.1.0"
