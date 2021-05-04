@@ -1,0 +1,15 @@
+{
+  "version": "0.1",
+  "words": [
+    "colors",
+    "lcov",
+    "mocha",
+    "nyc",
+    "reporter",
+    "webdeveric",
+    "xargs"
+  ],
+  "ignorePaths": [
+    "node_modules/**"
+  ]
+}
