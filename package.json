@@ -22,6 +22,7 @@
     "src"
   ],
   "scripts": {
+    "spellcheck": "cspell --no-progress \"./{bin,src,test}/**/*.{js,json}\" \"./*.{md,js}\" \"./package.json\"",
     "test": "nyc mocha --colors",
     "test:report": "nyc --reporter=lcov mocha --colors",
     "lint": "eslint ./bin ./src ./test --fix"
@@ -37,14 +38,15 @@
     "url": "http://webdeveric.com/"
   },
   "dependencies": {
-    "@webdeveric/utils": "^0.4.1"
+    "@webdeveric/utils": "^0.5.2"
   },
   "devDependencies": {
-    "@webdeveric/eslint-config": "^0.1.0",
+    "@webdeveric/eslint-config": "^0.1.2",
     "chai": "^4.2.0",
-    "eslint": "^7.19.0",
+    "cspell": "^5.3.12",
+    "eslint": "^7.25.0",
     "mocha": "^8.2.1",
-    "mock-fs": "^4.13.0",
+    "mock-fs": "^4.14.0",
     "nyc": "^15.1.0"
   }
 }
