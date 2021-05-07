@@ -1,53 +1,55 @@
-'use strict';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
 
-const path = require('path');
-const mockFs = require('mock-fs');
-const { expect } = require('chai');
+import mockFs from 'mock-fs';
 
-const {
+import {
   getAbsolutePaths,
   getJsonIndentation,
   getTrailingWhitespace,
   readJson,
   syncVersion,
-} = require('../src/helpers.js');
+} from '../src/helpers.mjs';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname( __filename );
 
 describe('getAbsolutePaths()', function() {
   it('returns an array of file paths', () => {
     const files = getAbsolutePaths([ __filename ]);
 
-    expect( files ).to.include.members([ __filename ]);
+    expect( files ).toEqual( expect.arrayContaining( [ __filename ] ) );
   });
 
   it('returns an array of file paths using custom CWD', () => {
     const files = getAbsolutePaths([ path.basename( __filename ) ], __dirname);
 
-    expect( files ).to.include.members([ __filename ]);
+    expect( files ).toEqual( expect.arrayContaining( [ __filename ] ) );
   });
 });
 
 describe('getJsonIndentation()', function() {
   it('returns number of spaces', () => {
-    expect( getJsonIndentation('{\n "test": true }') ).to.equal( 1 );
-    expect( getJsonIndentation('{\n  "test": true }') ).to.equal( 2 );
-    expect( getJsonIndentation('{\n   "test": true }') ).to.equal( 3 );
-    expect( getJsonIndentation('{\n    "test": true }') ).to.equal( 4 );
+    expect( getJsonIndentation('{\n "test": true }') ).toEqual( 1 );
+    expect( getJsonIndentation('{\n  "test": true }') ).toEqual( 2 );
+    expect( getJsonIndentation('{\n   "test": true }') ).toEqual( 3 );
+    expect( getJsonIndentation('{\n    "test": true }') ).toEqual( 4 );
   });
 
   it('returns space character', () => {
-    expect( getJsonIndentation('{\n\t"test": true }') ).to.equal('\t');
-    expect( getJsonIndentation('{\n\t\t"test": true }') ).to.equal('\t\t');
+    expect( getJsonIndentation('{\n\t"test": true }') ).toEqual('\t');
+    expect( getJsonIndentation('{\n\t\t"test": true }') ).toEqual('\t\t');
   });
 
   it('returns null when no spacing detected', () => {
-    expect( getJsonIndentation('{\n"test": true }') ).to.be.null;
-    expect( getJsonIndentation('{ "test": true }') ).to.be.null;
+    expect( getJsonIndentation('{\n"test": true }') ).toBeNull();
+    expect( getJsonIndentation('{ "test": true }') ).toBeNull();
   });
 });
 
 describe('getTrailingWhitespace()', function() {
   it('returns a string containing the trailing whitespace', async () => {
-    expect( getTrailingWhitespace('{ "test": true }\n\n') ).to.equal('\n\n');
+    expect( getTrailingWhitespace('{ "test": true }\n\n') ).toEqual('\n\n');
   });
 });
 
@@ -55,7 +57,7 @@ describe('readJson()', function() {
   it('returns json data', async () => {
     const json = await readJson( path.join( __dirname, '../package.json') );
 
-    expect( json.data ).to.be.instanceOf( Object );
+    expect( json.data ).toBeInstanceOf( Object );
   });
 });
 
@@ -74,9 +76,9 @@ describe('syncVersion()', function() {
 
   it('updates the version property in the file', async () => {
     [ 'manifest.json', 'example.json' ].forEach( async file => {
-      expect( (await readJson( file )).data.version ).to.equal('0.1.0');
-      expect( await syncVersion( file, '1.0.0') ).to.equal( file );
-      expect( (await readJson( file )).data.version ).to.equal('1.0.0');
+      expect( (await readJson( file )).data.version ).toEqual('0.1.0');
+      expect( await syncVersion( file, '1.0.0') ).toEqual( file );
+      expect( (await readJson( file )).data.version ).toEqual('1.0.0');
     });
   });
 });

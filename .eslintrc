@@ -1,9 +1,14 @@
 {
   "extends": "@webdeveric/eslint-config",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
   "env": {
     "browser": false,
     "es6": true,
-    "mocha": true,
+    "mocha": false,
+    "jest": true,
     "node": true
   }
 }

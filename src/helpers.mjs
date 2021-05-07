@@ -1,11 +1,10 @@
-'use strict';
+import { readFile, writeFile } from 'node:fs/promises';
+import fs from 'node:fs';
+import path from 'node:path';
 
-const fs = require('fs');
-const path = require('path');
+import { uniqueItems } from '@webdeveric/utils';
 
-const { uniqueItems } = require('@webdeveric/utils');
-
-function getAbsolutePaths( files, cwd )
+export function getAbsolutePaths( files, cwd )
 {
   return uniqueItems(
     files.map(
@@ -14,7 +13,7 @@ function getAbsolutePaths( files, cwd )
   );
 }
 
-function getJsonIndentation( contents )
+export function getJsonIndentation( contents )
 {
   const matches = contents.match(/(?<=[{[]\n+)(?<spaces>[ \t]+)/);
 
@@ -27,16 +26,19 @@ function getJsonIndentation( contents )
   return null;
 }
 
-function getTrailingWhitespace( contents )
+export function getTrailingWhitespace( contents )
 {
   const matches = contents.match(/\s+$/s);
 
   return matches ? matches[ 0 ] : '';
 }
 
-async function readJson( file )
+export async function readJson( file )
 {
-  const contents = await fs.promises.readFile( file, { encoding: 'utf8' });
+  const contents = await readFile( file, {
+    encoding: 'utf8',
+    flag: fs.constants.O_RDONLY,
+  });
 
   return {
     space: getJsonIndentation( contents ),
@@ -45,7 +47,7 @@ async function readJson( file )
   };
 }
 
-async function syncVersion( file, version )
+export async function syncVersion( file, version )
 {
   const { data, space, trailingWhitespace } = await readJson( file );
 
@@ -53,15 +55,7 @@ async function syncVersion( file, version )
 
   const contents = JSON.stringify( data, null, space );
 
-  await fs.promises.writeFile( file, `${contents}${trailingWhitespace}` );
+  await writeFile( file, `${contents}${trailingWhitespace}` );
 
   return file;
 }
-
-module.exports = {
-  getAbsolutePaths,
-  getJsonIndentation,
-  getTrailingWhitespace,
-  readJson,
-  syncVersion,
-};

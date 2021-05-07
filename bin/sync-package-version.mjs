@@ -1,11 +1,9 @@
 #!/usr/bin/env node
 
-'use strict';
-
-const {
+import {
   getAbsolutePaths,
   syncVersion,
-} = require('../src/helpers');
+} from '../src/helpers.mjs';
 
 const {
   // This is set when running inside an npm script.
