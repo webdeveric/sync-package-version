@@ -38,15 +38,15 @@
     "url": "http://webdeveric.com/"
   },
   "dependencies": {
-    "@webdeveric/utils": "^0.5.2"
+    "@webdeveric/utils": "^0.11.0"
   },
   "devDependencies": {
-    "@webdeveric/eslint-config": "^0.1.2",
+    "@webdeveric/eslint-config": "^0.2.3",
     "chai": "^4.2.0",
     "cspell": "^5.3.12",
-    "eslint": "^7.25.0",
-    "mocha": "^8.2.1",
-    "mock-fs": "^4.14.0",
+    "eslint": "^8.8.0",
+    "mocha": "^9.2.0",
+    "mock-fs": "^5.1.2",
     "nyc": "^15.1.0"
   }
 }
