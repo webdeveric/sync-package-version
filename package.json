@@ -38,7 +38,7 @@
     "url": "http://webdeveric.com/"
   },
   "dependencies": {
-    "@webdeveric/utils": "^0.11.0"
+    "@webdeveric/utils": "^0.12.0"
   },
   "devDependencies": {
     "@webdeveric/eslint-config": "^0.2.3",
