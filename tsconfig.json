@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    "target": "es2021",
+    "module": "esnext",
+    "moduleResolution": "NodeNext",
+    "lib": [
+      "DOM",
+      "es2021"
+    ],
+    "resolveJsonModule": true,
+    "alwaysStrict": false,
+    "strict": true,
+    "declaration": true,
+    "outDir": "./dist",
+    "downlevelIteration": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "importsNotUsedAsValues": "error",
+    "noErrorTruncation": true,
+    "exactOptionalPropertyTypes": false,
+    "noImplicitOverride": false,
+    "noUncheckedIndexedAccess": false,
+    "rootDir": "./src",
+    "paths": {
+      "@commands/*": [
+        "./src/commands/*"
+      ],
+      "@src/*": [
+        "./src/*"
+      ],
+    }
+  },
+  "include": [
+    "src/**/*",
+    "test/**/*"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "private"
+  ]
+}

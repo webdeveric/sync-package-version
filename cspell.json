@@ -1,11 +1,17 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "words": [
     "colors",
+    "corepack",
+    "esbuild",
     "lcov",
     "mocha",
     "nyc",
+    "outdir",
+    "pnpm",
+    "postbuild",
     "reporter",
+    "typecheck",
     "webdeveric",
     "xargs"
   ],
