@@ -1,7 +1,8 @@
 {
   "name": "@webdeveric/sync-package-version",
   "version": "0.3.0",
-  "description": "Use your package.json version number in other files",
+  "description": "Sync your package.json version number across other files",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },
@@ -15,17 +16,30 @@
   },
   "homepage": "https://github.com/webdeveric/sync-package-version/#readme",
   "bin": {
-    "sync-package-version": "bin/sync-package-version.js"
+    "sync-package-version": "dist/bin.js"
   },
   "files": [
-    "bin",
-    "src"
+    "dist"
   ],
+  "engines": {
+    "node": ">=16.15.0"
+  },
+  "packageManager": "pnpm@7.2.1",
+  "exports": {
+    ".": {
+      "import": "./dist/bin.js"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
-    "spellcheck": "cspell --no-progress \"./{bin,src,test}/**/*.{js,json}\" \"./*.{md,js}\" \"./package.json\"",
+    "build": "node ./build.mjs",
+    "typecheck": "tsc --noEmit && tsc -p ./tsconfig.project-files.json",
+    "build:ts": "tsc",
+    "spellcheck": "cspell --no-progress \"./{src,test}/**/*.{ts,js,json}\" \"./*.{md,js,mjs}\" \"./package.json\"",
     "test": "nyc mocha --colors",
     "test:report": "nyc --reporter=lcov mocha --colors",
-    "lint": "eslint ./bin ./src ./test --fix"
+    "lint": "eslint ./src ./test --fix",
+    "prepublishOnly": "pnpm typecheck && pnpm spellcheck && pnpm lint && pnpm test && pnpm build"
   },
   "keywords": [
     "package.json",
@@ -38,15 +52,25 @@
     "url": "http://webdeveric.com/"
   },
   "dependencies": {
-    "@webdeveric/utils": "^0.14.1"
+    "@webdeveric/utils": "^0.15.1",
+    "lodash.get": "^4.4.2",
+    "lodash.set": "^4.3.2",
+    "semver": "^7.3.7"
   },
   "devDependencies": {
-    "@webdeveric/eslint-config": "^0.2.4",
+    "@types/lodash.get": "^4.4.7",
+    "@types/lodash.set": "^4.3.7",
+    "@types/node": "^18.0.0",
+    "@types/semver": "^7.3.10",
+    "@webdeveric/eslint-config-ts": "^0.5.2",
     "chai": "^4.2.0",
+    "commander": "^9.3.0",
     "cspell": "^6.1.1",
+    "esbuild": "^0.14.43",
     "eslint": "^8.8.0",
     "mocha": "^10.0.0",
     "mock-fs": "^5.1.2",
-    "nyc": "^15.1.0"
+    "nyc": "^15.1.0",
+    "typescript": "^4.7.3"
   }
 }
