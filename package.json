@@ -36,8 +36,7 @@
     "typecheck": "tsc --noEmit && tsc -p ./tsconfig.project-files.json",
     "build:ts": "tsc",
     "spellcheck": "cspell --no-progress \"./{src,test}/**/*.{ts,js,json}\" \"./*.{md,js,mjs}\" \"./package.json\"",
-    "test": "nyc mocha --colors",
-    "test:report": "nyc --reporter=lcov mocha --colors",
+    "test": "ts-mocha -n loader=ts-node/esm -p tsconfig.json './src/**/*.test.ts'",
     "lint": "eslint ./src ./test --fix",
     "prepublishOnly": "pnpm typecheck && pnpm spellcheck && pnpm lint && pnpm test && pnpm build"
   },
@@ -58,8 +57,11 @@
     "semver": "^7.3.7"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.1",
     "@types/lodash.get": "^4.4.7",
     "@types/lodash.set": "^4.3.7",
+    "@types/mocha": "^9.1.1",
+    "@types/mock-fs": "^4.13.1",
     "@types/node": "^18.0.0",
     "@types/semver": "^7.3.10",
     "@webdeveric/eslint-config-ts": "^0.5.2",
@@ -68,9 +70,9 @@
     "cspell": "^6.1.1",
     "esbuild": "^0.14.43",
     "eslint": "^8.8.0",
-    "mocha": "^10.0.0",
     "mock-fs": "^5.1.2",
-    "nyc": "^15.1.0",
+    "ts-mocha": "^10.0.0",
+    "ts-node": "^10.8.1",
     "typescript": "^4.7.3"
   }
 }
