@@ -1,9 +1,13 @@
+#!/usr/bin/env -S node --experimental-json-modules --no-warnings
+
 import { build } from 'esbuild';
+import { clean } from 'esbuild-plugin-clean';
+import { trimIndentation } from '@webdeveric/utils/trimIndentation';
 
 import pkg from './package.json' assert { type: 'json' };
 
 try {
-  const entryPoints = [ './src/bin.ts' ];
+  const entryPoints = [ './src/cli.ts' ];
 
   const results = await build({
     entryPoints,
@@ -15,8 +19,20 @@ try {
     external: [ './node_modules/*', './package.json' ],
     minify: true,
     banner: {
-      js: `// Source code available at ${pkg.repository.url}`,
+      js: trimIndentation(`
+        /**!
+         * @file ${pkg.name} | ${pkg.description}
+         * @version ${pkg.version}
+         * @author ${pkg.author.name} <${pkg.author.email}>
+         * @license ${pkg.license}
+         */
+      `),
     },
+    plugins: [
+      clean({
+        patterns: [ './dist/*' ],
+      }),
+    ],
   });
 
   if (results.warnings.length) {
