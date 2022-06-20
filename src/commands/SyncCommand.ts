@@ -19,10 +19,10 @@ export type SyncOptions = {
 };
 
 export class SyncCommand extends CustomCommand {
-  constructor(program?: Application) {
+  constructor(app?: Application) {
     super();
 
-    program && this.register(program);
+    app && this.register(app);
   }
 
   register(app: Application): Command {
