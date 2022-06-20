@@ -2,6 +2,7 @@
 
 import { build } from 'esbuild';
 import { clean } from 'esbuild-plugin-clean';
+import { esbuildPluginNodeExternals } from 'esbuild-plugin-node-externals';
 import { trimIndentation } from '@webdeveric/utils/trimIndentation';
 
 import pkg from './package.json' assert { type: 'json' };
@@ -14,7 +15,11 @@ try {
     bundle: true,
     format: 'esm',
     target: `node${process.versions.node}`,
-    external: [ './node_modules/*', './package.json' ],
+    external: [
+      // './node_modules/*',
+      '@webdeveric/sync-package-version/package.json',
+      './package.json',
+    ],
     minify: true,
     banner: {
       js: trimIndentation(`
@@ -30,6 +35,8 @@ try {
       clean({
         patterns: [ './dist/*' ],
       }),
+      // Don't use `node_modules` in `external` until https://github.com/evanw/esbuild/issues/2246 is resolved.
+      esbuildPluginNodeExternals(),
     ],
   });
 
