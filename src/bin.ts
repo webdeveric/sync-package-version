@@ -1,22 +1,23 @@
-#!/usr/bin/env node
-import { Command } from 'commander';
-import semver from 'semver';
+#!/usr/bin/env -S node --experimental-json-modules --no-warnings
+import pkg from '@webdeveric/sync-package-version/package.json' assert { type: 'json' };
 
-import {
-  engines,
-  } from '@webdeveric/sync-package-version/package.json' assert { type: 'json'
-};
+import * as commands from '@commands/index.js';
 
-import { application } from './application.js';
-
-if (! semver.satisfies(process.versions.node, engines.node)) {
-  throw new Error(
-    `NodeJs ${engines.node} is required. You're running version ${process.versions.node}`,
-  );
-}
+import Application from './Application.js';
+import { assertSupportedNodeVersion } from './assertions.js';
 
 try {
-  await application.run(new Command(), process.argv);
+  assertSupportedNodeVersion();
+
+  const app = new Application({
+    name: pkg.name,
+    description: pkg.description,
+    version: pkg.version,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    commands: Object.values(commands).map(Cmd => new Cmd()),
+  });
+
+  await app.parseAsync(process.argv);
 } catch (error) {
   console.error(error);
 

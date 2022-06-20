@@ -7,17 +7,8 @@ import { expect } from 'chai';
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 import {
-  getAbsolutePaths, getJsonIndentation, getTrailingWhitespace, readJson,
+  getJsonIndentation, getTrailingWhitespace, readJson,
 } from './helpers.js';
-
-
-describe('getAbsolutePaths()', function() {
-  it('returns an array of file paths', () => {
-    const files = getAbsolutePaths([ 'test.json' ], '/tmp/');
-
-    expect( files ).to.include.members([ '/tmp/test.json' ]);
-  });
-});
 
 describe('getJsonIndentation()', function() {
   it('returns number of spaces', () => {

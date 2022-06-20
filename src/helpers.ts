@@ -1,15 +1,4 @@
-import path from 'node:path';
 import { readFile } from 'node:fs/promises';
-
-import { uniqueItems } from '@webdeveric/utils/uniqueItems';
-
-export function getAbsolutePaths(files: string[], cwd: string): string[] {
-  return uniqueItems(
-    files.map(file =>
-      path.isAbsolute(file) ? file : path.resolve(cwd, file),
-    ),
-  );
-}
 
 export function getJsonIndentation(contents: string): number | string {
   const matches = contents.match(/(?<=[{[]\n+)(?<spaces>[ \t]+)/);

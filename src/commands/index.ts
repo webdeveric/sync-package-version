@@ -1,1 +1,1 @@
-export * from './sync/index.js';
+export * from './SyncCommand.js';
