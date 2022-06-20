@@ -3,7 +3,9 @@
   "words": [
     "colors",
     "corepack",
+    "downlevel",
     "esbuild",
+    "esnext",
     "lcov",
     "mocha",
     "nyc",
