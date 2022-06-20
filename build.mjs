@@ -7,10 +7,8 @@ import { trimIndentation } from '@webdeveric/utils/trimIndentation';
 import pkg from './package.json' assert { type: 'json' };
 
 try {
-  const entryPoints = [ './src/cli.ts' ];
-
   const results = await build({
-    entryPoints,
+    entryPoints: [ './src/cli.ts' ],
     outdir: './dist',
     platform: 'node',
     bundle: true,
@@ -20,7 +18,7 @@ try {
     minify: true,
     banner: {
       js: trimIndentation(`
-        /**!
+        /*!
          * @file ${pkg.name} | ${pkg.description}
          * @version ${pkg.version}
          * @author ${pkg.author.name} <${pkg.author.email}>
