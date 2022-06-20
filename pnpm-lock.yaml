@@ -15,6 +15,7 @@ specifiers:
   cspell: ^6.1.2
   esbuild: ^0.14.46
   esbuild-plugin-clean: ^0.9.0
+  esbuild-plugin-node-externals: ^0.3.0
   eslint: ^8.18.0
   lodash.get: ^4.4.2
   lodash.set: ^4.3.2
@@ -45,6 +46,7 @@ devDependencies:
   cspell: 6.1.2
   esbuild: 0.14.46
   esbuild-plugin-clean: 0.9.0_esbuild@0.14.46
+  esbuild-plugin-node-externals: 0.3.0_esbuild@0.14.46
   eslint: 8.18.0
   mocha: 10.0.0
   mock-fs: 5.1.2
@@ -1229,6 +1231,16 @@ packages:
       chalk: 4.1.2
       del: 6.1.1
       esbuild: 0.14.46
+    dev: true
+
+  /esbuild-plugin-node-externals/0.3.0_esbuild@0.14.46:
+    resolution: {integrity: sha512-2F0OVeWr6q0Hwp+U1/+x7HUOgy4tey6pEBMKx7lA4s7N6U4Kb9+ubtAoGzPYP4mojTt4lTbOZUPfcuPBjGza4w==}
+    peerDependencies:
+      esbuild: ^0.14.0
+    dependencies:
+      esbuild: 0.14.46
+      find-up: 5.0.0
+      jsonfile: 6.1.0
     dev: true
 
   /esbuild-sunos-64/0.14.46:
