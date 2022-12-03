@@ -2,7 +2,7 @@
 
 import { build } from 'esbuild';
 import { clean } from 'esbuild-plugin-clean';
-import { esbuildPluginNodeExternals } from 'esbuild-plugin-node-externals';
+import { nodeExternals } from 'esbuild-plugin-node-externals';
 import { trimIndentation } from '@webdeveric/utils/trimIndentation';
 
 import pkg from './package.json' assert { type: 'json' };
@@ -36,7 +36,7 @@ try {
         patterns: [ './dist/*' ],
       }),
       // Don't use `node_modules` in `external` until https://github.com/evanw/esbuild/issues/2246 is resolved.
-      esbuildPluginNodeExternals(),
+      nodeExternals(),
     ],
   });
 
