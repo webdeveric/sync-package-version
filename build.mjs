@@ -16,7 +16,6 @@ try {
     format: 'esm',
     target: `node${process.versions.node}`,
     external: [
-      // './node_modules/*',
       '@webdeveric/sync-package-version/package.json',
       './package.json',
     ],
@@ -35,7 +34,6 @@ try {
       clean({
         patterns: [ './dist/*' ],
       }),
-      // Don't use `node_modules` in `external` until https://github.com/evanw/esbuild/issues/2246 is resolved.
       nodeExternals(),
     ],
   });
