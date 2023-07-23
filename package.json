@@ -22,9 +22,9 @@
     "dist"
   ],
   "engines": {
-    "node": ">=16.15.0"
+    "node": ">=18.0.0"
   },
-  "packageManager": "pnpm@7.17.1",
+  "packageManager": "pnpm@8.6.9",
   "exports": {
     ".": {
       "import": "./dist/cli.js"
@@ -50,31 +50,31 @@
     "url": "http://webdeveric.com/"
   },
   "dependencies": {
-    "@webdeveric/utils": "^0.18.0",
-    "commander": "^9.4.1",
+    "@webdeveric/utils": "^0.27.0",
+    "commander": "^11.0.0",
     "lodash.get": "^4.4.2",
     "lodash.set": "^4.3.2",
-    "semver": "^7.3.8"
+    "semver": "^7.5.4"
   },
   "devDependencies": {
-    "@types/chai": "^4.3.1",
+    "@types/chai": "^4.3.5",
     "@types/lodash.get": "^4.4.7",
     "@types/lodash.set": "^4.3.7",
     "@types/mocha": "^10.0.1",
     "@types/mock-fs": "^4.13.1",
-    "@types/node": "^18.0.0",
-    "@types/semver": "^7.3.10",
-    "@webdeveric/eslint-config-ts": "^0.5.2",
-    "chai": "^4.3.6",
-    "cspell": "^6.16.0",
-    "esbuild": "^0.15.16",
+    "@types/node": "^18.17.0",
+    "@types/semver": "^7.5.0",
+    "@webdeveric/eslint-config-ts": "^0.6.0",
+    "chai": "^4.3.7",
+    "cspell": "^6.31.2",
+    "esbuild": "^0.18.15",
     "esbuild-plugin-clean": "^1.0.1",
     "esbuild-plugin-node-externals": "^1.0.1",
-    "eslint": "^8.29.0",
-    "mocha": "^10.0.0",
-    "mock-fs": "^5.1.2",
+    "eslint": "^8.45.0",
+    "mocha": "^10.2.0",
+    "mock-fs": "^5.2.0",
     "ts-mocha": "^10.0.0",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.3"
+    "typescript": "^5.1.6"
   }
 }
