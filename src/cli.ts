@@ -7,7 +7,7 @@ import Application from './Application.js';
 import { assertSupportedNodeVersion } from './assertions.js';
 
 try {
-  assertSupportedNodeVersion();
+  assertSupportedNodeVersion(process.versions.node);
 
   const app = new Application({
     name: pkg.name,
