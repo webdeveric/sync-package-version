@@ -12,6 +12,7 @@
     "outdir",
     "pnpm",
     "postbuild",
+    "preinstall",
     "reporter",
     "typecheck",
     "webdeveric",
