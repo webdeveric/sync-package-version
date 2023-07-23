@@ -19,12 +19,6 @@ export type SyncOptions = {
 };
 
 export class SyncCommand extends CustomCommand {
-  constructor(app?: Application) {
-    super();
-
-    app && this.register(app);
-  }
-
   register(app: Application): Command {
     const command = app
       .command('sync', { isDefault: true })
