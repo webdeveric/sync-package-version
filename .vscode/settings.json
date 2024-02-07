@@ -6,7 +6,6 @@
     "typescript"
   ],
   "eslint.lintTask.enable": true,
-  "eslint.packageManager": "npm",
   "editor.bracketPairColorization.enabled": true,
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.formatOnSave": true,
