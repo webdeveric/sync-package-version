@@ -1,6 +1,6 @@
 # @webdeveric/sync-package-version
 
-[![Build Status](https://travis-ci.org/webdeveric/sync-package-version.svg?branch=master)](https://travis-ci.org/webdeveric/sync-package-version)
+[![Node.js CI](https://github.com/webdeveric/sync-package-version/actions/workflows/node.js.yml/badge.svg)](https://github.com/webdeveric/sync-package-version/actions/workflows/node.js.yml)
 
 ## Install
 
