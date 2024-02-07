@@ -8,7 +8,7 @@ export type ApplicationSettings = {
   commands: CustomCommand[];
 };
 
-export default class Application extends Command {
+export class Application extends Command {
   constructor(settings: ApplicationSettings) {
     super(settings.name.split('/')[ 1 ]);
 

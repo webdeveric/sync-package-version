@@ -3,7 +3,7 @@ import pkg from '@webdeveric/sync-package-version/package.json' assert { type: '
 
 import * as commands from '@commands/index.js';
 
-import Application from './Application.js';
+import { Application } from './Application.js';
 import { assertSupportedNodeVersion } from './assertions.js';
 
 try {

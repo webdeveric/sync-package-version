@@ -8,7 +8,7 @@ import { isPrimitive } from '@webdeveric/utils/type-predicate';
 import set from 'lodash.set';
 import { uniqueItems } from '@webdeveric/utils/uniqueItems';
 
-import type Application from '@src/Application.js';
+import type { Application } from '@src/Application.js';
 import { CustomCommand } from '@commands/CustomCommand.js';
 import { readJson } from '@src/helpers.js';
 
@@ -63,5 +63,3 @@ export class SyncCommand extends CustomCommand {
     updatedFiles.forEach(file => cmd.configureOutput().writeOut?.(`${file}\n`));
   }
 }
-
-export default SyncCommand;
