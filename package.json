@@ -1,6 +1,6 @@
 {
   "name": "@webdeveric/sync-package-version",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "Sync your package.json version number across other files",
   "type": "module",
   "publishConfig": {
