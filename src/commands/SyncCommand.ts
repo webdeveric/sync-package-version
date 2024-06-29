@@ -1,16 +1,16 @@
-import { resolve } from 'node:path';
 import { writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
 
-import { type Command, Option } from 'commander';
-import get from 'lodash.get';
 import { getType } from '@webdeveric/utils/getType';
-import { isPrimitive } from '@webdeveric/utils/type-predicate';
-import set from 'lodash.set';
+import { isPrimitive } from '@webdeveric/utils/predicate/isPrimitive';
 import { uniqueItems } from '@webdeveric/utils/uniqueItems';
+import { Option, type Command } from 'commander';
+import get from 'lodash.get';
+import set from 'lodash.set';
 
-import type { Application } from '@src/Application.js';
 import { CustomCommand } from '@commands/CustomCommand.js';
 import { readJson } from '@src/helpers.js';
+import type { Application } from '@src/Application.js';
 
 export type SyncOptions = {
   packageVersion: string;

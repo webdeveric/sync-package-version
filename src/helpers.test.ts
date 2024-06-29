@@ -1,14 +1,14 @@
-import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import { expect } from 'chai';
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 import {
   getJsonIndentation, getTrailingWhitespace, readJson,
 } from './helpers.js';
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 describe('getJsonIndentation()', function() {
   it('returns number of spaces', () => {
