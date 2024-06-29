@@ -1,11 +1,15 @@
 {
   "extends": "./tsconfig.json",
-  "include": [
-    "./*.mjs"
-  ],
   "compilerOptions": {
-    "noEmit": true,
     "allowJs": true,
-    "rootDir": "."
-  }
+    "noEmit": true,
+    "rootDir": ".",
+  },
+  "include": [
+    "./.eslintrc.cjs",
+    "./*.cjs",
+    "./*.mjs",
+    "./*.ts",
+    "./*.mts"
+  ]
 }
