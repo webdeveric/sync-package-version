@@ -1,4 +1,5 @@
 import { Command } from 'commander';
+
 import type { CustomCommand } from '@commands/CustomCommand.js';
 
 export type ApplicationSettings = {

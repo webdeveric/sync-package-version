@@ -1,4 +1,5 @@
 import type { Application } from '@src/Application.js';
+
 import type { Command } from 'commander';
 
 export abstract class CustomCommand {
