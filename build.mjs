@@ -1,6 +1,6 @@
 #!/usr/bin/env -S node --experimental-json-modules --no-warnings
 
-import { trimIndentation } from '@webdeveric/utils/trimIndentation';
+import { comment } from '@webdeveric/utils/comment';
 import { build } from 'esbuild';
 import { clean } from 'esbuild-plugin-clean';
 import { nodeExternals } from 'esbuild-plugin-node-externals';
@@ -9,30 +9,30 @@ import pkg from './package.json' assert { type: 'json' };
 
 try {
   const results = await build({
-    entryPoints: [ './src/cli.ts' ],
+    entryPoints: ['./src/cli.ts'],
     outdir: './dist',
     platform: 'node',
     bundle: true,
     format: 'esm',
     target: `node${process.versions.node}`,
-    external: [
-      '@webdeveric/sync-package-version/package.json',
-      './package.json',
-    ],
+    external: ['@webdeveric/sync-package-version/package.json', './package.json'],
     minify: true,
     banner: {
-      js: trimIndentation(`
-        /*!
-         * @file ${pkg.name} | ${pkg.description}
-         * @version ${pkg.version}
-         * @author ${pkg.author.name} <${pkg.author.email}>
-         * @license ${pkg.license}
-         */
-      `),
+      js: comment(
+        `
+        @file ${pkg.name} | ${pkg.description}
+        @version ${pkg.version}
+        @author ${pkg.author.name} <${pkg.author.email}>
+        @license ${pkg.license}
+        `,
+        {
+          type: 'legal',
+        },
+      ),
     },
     plugins: [
       clean({
-        patterns: [ './dist/*' ],
+        patterns: ['./dist/*'],
       }),
       nodeExternals(),
     ],
