@@ -3,9 +3,7 @@
     "target": "es2022",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "lib": [
-      "es2023"
-    ],
+    "lib": ["es2023"],
     "resolveJsonModule": true,
     "alwaysStrict": false,
     "strict": true,
@@ -28,20 +26,10 @@
     "noUncheckedIndexedAccess": false,
     "rootDir": "./src",
     "paths": {
-      "@commands/*": [
-        "./src/commands/*"
-      ],
-      "@src/*": [
-        "./src/*"
-      ]
+      "@commands/*": ["./src/commands/*"],
+      "@src/*": ["./src/*"]
     }
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "dist",
-    "node_modules",
-    "private"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["dist", "node_modules", "private"]
 }

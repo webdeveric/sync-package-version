@@ -11,16 +11,16 @@ export type ApplicationSettings = {
 
 export class Application extends Command {
   constructor(settings: ApplicationSettings) {
-    super(settings.name.split('/')[ 1 ]);
+    super(settings.name.split('/')[1]);
 
     this.description(settings.description).version(settings.version);
 
-    settings.commands.forEach(customCommand => {
+    settings.commands.forEach((customCommand) => {
       customCommand.register(this);
     });
   }
 
-  registerCommand(customCommand: CustomCommand):this {
+  registerCommand(customCommand: CustomCommand): this {
     customCommand.register(this);
 
     return this;
