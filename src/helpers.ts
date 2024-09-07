@@ -15,7 +15,7 @@ export function getJsonIndentation(contents: string): number | string {
 export function getTrailingWhitespace(contents: string): string {
   const matches = contents.match(/\s+$/s);
 
-  return matches ? matches[ 0 ] : '';
+  return matches ? matches[0] : '';
 }
 
 export type JsonFileDetails<T = ReturnType<JSON['parse']>> = {

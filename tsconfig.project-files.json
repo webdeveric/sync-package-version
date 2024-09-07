@@ -3,13 +3,7 @@
   "compilerOptions": {
     "allowJs": true,
     "noEmit": true,
-    "rootDir": ".",
+    "rootDir": "."
   },
-  "include": [
-    "./.eslintrc.cjs",
-    "./*.cjs",
-    "./*.mjs",
-    "./*.ts",
-    "./*.mts"
-  ]
+  "include": ["./.eslintrc.cjs", "./*.cjs", "./*.mjs", "./*.ts", "./*.mts"]
 }

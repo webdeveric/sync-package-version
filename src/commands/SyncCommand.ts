@@ -23,8 +23,16 @@ export class SyncCommand extends CustomCommand {
     const command = app
       .command('sync', { isDefault: true })
       .description('Sync your package.json version across other files')
-      .addOption(new Option('--package-version <version>', 'Custom version number').makeOptionMandatory().env('npm_package_version'))
-      .option('--property-path <path>', 'The path to the property in the destination. Examples: "collection[0].version" "some.deep.object.version"', 'version')
+      .addOption(
+        new Option('--package-version <version>', 'Custom version number')
+          .makeOptionMandatory()
+          .env('npm_package_version'),
+      )
+      .option(
+        '--property-path <path>',
+        'The path to the property in the destination. Examples: "collection[0].version" "some.deep.object.version"',
+        'version',
+      )
       .option('--force', 'Force sync, ignoring destination data type', false)
       .argument('<files...>', 'Sync version number to these files')
       .action(this.action.bind(this));
@@ -32,16 +40,13 @@ export class SyncCommand extends CustomCommand {
     return command;
   }
 
-  async syncVersion(
-    file: string,
-    options: SyncOptions,
-  ): Promise<string> {
+  async syncVersion(file: string, options: SyncOptions): Promise<string> {
     const { packageVersion, propertyPath = 'version', force } = options;
     const { data, space, trailingWhitespace } = await readJson(file);
 
     const existingValue = get(data, propertyPath);
 
-    if (! force && ! isPrimitive(existingValue)) {
+    if (!force && !isPrimitive(existingValue)) {
       throw new Error(`Replacing ${getType(existingValue)} with ${getType(packageVersion)} in ${file}\n`);
     }
 
@@ -56,10 +61,9 @@ export class SyncCommand extends CustomCommand {
 
   async action(files: string[], options: SyncOptions, cmd: Command): Promise<void> {
     const updatedFiles = await Promise.all(
-      uniqueItems(files.map((file => resolve(file))))
-        .map( file => this.syncVersion( file, options ) ),
+      uniqueItems(files.map((file) => resolve(file))).map((file) => this.syncVersion(file, options)),
     );
 
-    updatedFiles.forEach(file => cmd.configureOutput().writeOut?.(`${file}\n`));
+    updatedFiles.forEach((file) => cmd.configureOutput().writeOut?.(`${file}\n`));
   }
 }

@@ -13,7 +13,7 @@ try {
     description: pkg.description,
     version: pkg.version,
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    commands: Object.values(commands).map(Cmd => new Cmd()),
+    commands: Object.values(commands).map((Cmd) => new Cmd()),
   });
 
   await app.parseAsync(process.argv);
