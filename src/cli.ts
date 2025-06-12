@@ -1,6 +1,6 @@
 #!/usr/bin/env -S node --experimental-json-modules --no-warnings
 import * as commands from '@commands/index.js';
-import pkg from '@webdeveric/sync-package-version/package.json' assert { type: 'json' };
+import pkg from '@webdeveric/sync-package-version/package.json' with { type: 'json' };
 
 import { Application } from './Application.js';
 import { assertSupportedNodeVersion } from './assertions.js';
