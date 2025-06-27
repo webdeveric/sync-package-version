@@ -2,7 +2,7 @@ import assert from 'node:assert';
 
 import { satisfies } from 'semver';
 
-import pkg from '@webdeveric/sync-package-version/package.json' assert { type: 'json' };
+import pkg from '@webdeveric/sync-package-version/package.json' with { type: 'json' };
 
 export function assertSupportedNodeVersion(version: string): asserts version {
   assert(

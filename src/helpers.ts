@@ -1,21 +1,13 @@
 import { readFile } from 'node:fs/promises';
 
 export function getJsonIndentation(contents: string): number | string {
-  const matches = contents.match(/(?<=[{[]\n+)(?<spaces>[ \t]+)/);
+  const spaces = contents.match(/(?<=[{[]\n+)(?<spaces>[ \t]+)/)?.groups?.spaces ?? '';
 
-  if (matches) {
-    const spaces = matches.groups?.spaces ?? '';
-
-    return /[ ]+/.test(spaces) ? spaces.length : spaces;
-  }
-
-  return 0;
+  return spaces === '' ? 0 : /[ ]+/.test(spaces) ? spaces.length : spaces;
 }
 
 export function getTrailingWhitespace(contents: string): string {
-  const matches = contents.match(/\s+$/s);
-
-  return matches ? matches[0] : '';
+  return contents.match(/(?<whiteSpace>\s+)$/s)?.groups?.whiteSpace ?? '';
 }
 
 export type JsonFileDetails<T = ReturnType<JSON['parse']>> = {
