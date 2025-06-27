@@ -16,8 +16,11 @@
     "preinstall",
     "reporter",
     "typecheck",
+    "vitest",
     "webdeveric",
     "xargs"
   ],
-  "ignorePaths": ["node_modules/**"]
+  "ignorePaths": [
+    "node_modules/**"
+  ]
 }

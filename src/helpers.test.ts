@@ -1,7 +1,7 @@
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { expect } from 'chai';
+import { describe, it, expect } from 'vitest';
 
 import { getJsonIndentation, getTrailingWhitespace, readJson } from './helpers.js';
 
@@ -30,6 +30,10 @@ describe('getJsonIndentation()', function () {
 describe('getTrailingWhitespace()', function () {
   it('returns a string containing the trailing whitespace', async () => {
     expect(getTrailingWhitespace('{ "test": true }\n\n')).to.equal('\n\n');
+  });
+
+  it('returns empty string when trailing whitespace is not found', async () => {
+    expect(getTrailingWhitespace('test')).to.equal('');
   });
 });
 
