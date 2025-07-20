@@ -1,12 +1,13 @@
 import { writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
+import { assertIsObject } from '@webdeveric/utils/assertion/assertIsObject';
+import { get } from '@webdeveric/utils/get';
 import { getType } from '@webdeveric/utils/getType';
 import { isPrimitive } from '@webdeveric/utils/predicate/isPrimitive';
+import { set } from '@webdeveric/utils/set';
 import { uniqueItems } from '@webdeveric/utils/uniqueItems';
 import { Option, type Command } from 'commander';
-import get from 'lodash.get';
-import set from 'lodash.set';
 
 import { CustomCommand } from '@commands/CustomCommand.js';
 import { readJson } from '@src/helpers.js';
@@ -44,10 +45,12 @@ export class SyncCommand extends CustomCommand {
     const { packageVersion, propertyPath = 'version', force } = options;
     const { data, space, trailingWhitespace } = await readJson(file);
 
+    assertIsObject(data, `Invalid JSON data in file: ${file}`);
+
     const existingValue = get(data, propertyPath);
 
     if (!force && !isPrimitive(existingValue)) {
-      throw new Error(`Replacing ${getType(existingValue)} with ${getType(packageVersion)} in ${file}\n`);
+      throw new Error(`Cannot replace ${getType(existingValue)} with ${getType(packageVersion)} in ${file}`);
     }
 
     set(data, propertyPath, packageVersion);

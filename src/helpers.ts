@@ -10,7 +10,7 @@ export function getTrailingWhitespace(contents: string): string {
   return contents.match(/(?<whiteSpace>\s+)$/s)?.groups?.whiteSpace ?? '';
 }
 
-export type JsonFileDetails<T = ReturnType<JSON['parse']>> = {
+export type JsonFileDetails<T = unknown> = {
   space: NonNullable<Parameters<JSON['stringify']>[2]>;
   trailingWhitespace: string;
   data: T;
