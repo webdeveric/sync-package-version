@@ -39,7 +39,7 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "lint": "eslint ./src ./*.mjs --fix",
-    "prepublishOnly": "pnpm typecheck && pnpm spellcheck && pnpm lint && pnpm test && pnpm build"
+    "prepublishOnly": "pnpm typecheck && pnpm spellcheck && pnpm lint && pnpm coverage && pnpm build"
   },
   "keywords": [
     "package.json",
