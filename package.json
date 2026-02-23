@@ -9,7 +9,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/webdeveric/sync-package-version.git"
+    "url": "git+https://github.com/webdeveric/sync-package-version.git"
   },
   "bugs": {
     "url": "https://github.com/webdeveric/sync-package-version/issues"
@@ -53,10 +53,8 @@
   },
   "prettier": "@webdeveric/prettier-config",
   "dependencies": {
-    "@webdeveric/prettier-config": "^0.3.0",
     "@webdeveric/utils": "^0.74.1",
     "commander": "^14.0.3",
-    "prettier": "^3.8.1",
     "semver": "^7.7.4"
   },
   "devDependencies": {
@@ -64,13 +62,15 @@
     "@types/semver": "^7.7.1",
     "@vitest/coverage-v8": "^4.0.18",
     "@webdeveric/eslint-config-ts": "^0.12.0",
+    "@webdeveric/prettier-config": "^0.3.0",
     "cspell": "^9.7.0",
-    "esbuild": "^0.27.3",
     "esbuild-plugin-clean": "^1.0.1",
-    "eslint": "^8.57.1",
+    "esbuild": "^0.27.3",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
+    "eslint": "^8.57.1",
+    "prettier": "^3.8.1",
     "typescript": "^5.9.3",
     "validate-package-exports": "^0.18.0",
     "vitest": "^4.0.18"
