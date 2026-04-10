@@ -5,11 +5,9 @@
     "moduleResolution": "NodeNext",
     "lib": ["es2023"],
     "resolveJsonModule": true,
-    "alwaysStrict": false,
     "strict": true,
     "declaration": true,
     "outDir": "./dist",
-    "downlevelIteration": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -28,7 +26,8 @@
     "paths": {
       "@commands/*": ["./src/commands/*"],
       "@src/*": ["./src/*"]
-    }
+    },
+    "types": ["node"]
   },
   "include": ["src/**/*"],
   "exclude": ["dist", "node_modules", "private"]
