@@ -58,21 +58,21 @@
     "semver": "^7.7.4"
   },
   "devDependencies": {
-    "@types/node": "^20.19.33",
+    "@types/node": "^20.19.39",
     "@types/semver": "^7.7.1",
-    "@vitest/coverage-v8": "^4.0.18",
+    "@vitest/coverage-v8": "^4.1.4",
     "@webdeveric/eslint-config-ts": "^0.12.0",
-    "@webdeveric/prettier-config": "^0.3.0",
-    "cspell": "^9.7.0",
+    "@webdeveric/prettier-config": "^0.4.0",
+    "cspell": "^10.0.0",
+    "esbuild": "^0.28.0",
     "esbuild-plugin-clean": "^1.0.1",
-    "esbuild": "^0.27.3",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
-    "eslint": "^8.57.1",
-    "prettier": "^3.8.1",
-    "typescript": "^5.9.3",
-    "validate-package-exports": "^0.18.0",
-    "vitest": "^4.0.18"
+    "prettier": "^3.8.2",
+    "typescript": "^6.0.2",
+    "validate-package-exports": "^0.23.0",
+    "vitest": "^4.1.4"
   }
 }
