@@ -25,7 +25,7 @@ importers:
         specifier: ^7.7.1
         version: 7.7.1
       '@vitest/coverage-v8':
-        specifier: ^4.1.4
+        specifier: ^4.1.5
         version: 4.1.5(vitest@4.1.5)
       '@webdeveric/eslint-config-ts':
         specifier: ^0.12.0
@@ -55,16 +55,16 @@ importers:
         specifier: ^2.32.0
         version: 2.32.0(@typescript-eslint/parser@8.59.2(eslint@8.57.1)(typescript@6.0.3))(eslint-import-resolver-typescript@4.4.4)(eslint@8.57.1)
       prettier:
-        specifier: ^3.8.2
+        specifier: ^3.8.3
         version: 3.8.3
       typescript:
-        specifier: ^6.0.2
+        specifier: ^6.0.3
         version: 6.0.3
       validate-package-exports:
-        specifier: ^0.23.0
-        version: 0.23.0
+        specifier: ^0.25.0
+        version: 0.25.0
       vitest:
-        specifier: ^4.1.4
+        specifier: ^4.1.5
         version: 4.1.5(@types/node@20.19.39)(@vitest/coverage-v8@4.1.5)(vite@8.0.10(@types/node@20.19.39)(esbuild@0.28.0)(yaml@2.8.4))
 
 packages:
@@ -1002,6 +1002,10 @@ packages:
 
   '@webdeveric/utils@0.76.0':
     resolution: {integrity: sha512-PlQNbXni9dNXEU9YYTdDPM2rpFCBL6UIoJ2QESEI4Fd3z8yO+M5ASEqlIOEN0CDDg7AZ9Ylp+XmdITpsS90Dgg==}
+    engines: {node: '>=18.0.0'}
+
+  '@webdeveric/utils@0.79.0':
+    resolution: {integrity: sha512-1ANvex1ghT2JlK/Z6QqT1BR48RVFh1+gLYAL2A658FPrfbRCfxLj6FPKW1tGrgT6ucjq2EnCMhgmHY7KAowfww==}
     engines: {node: '>=18.0.0'}
 
   abbrev@4.0.0:
@@ -2549,8 +2553,8 @@ packages:
     resolution: {integrity: sha512-hVDIBwsRruT73PbK7uP5ebUt+ezEtCmzZz3F59BSr2F6OVFnJ/6h8liuvdLrQ88Xmnk6/+xGGuq+pG9WwTuy3A==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  validate-package-exports@0.23.0:
-    resolution: {integrity: sha512-0SwnVCh+6i8UVuXYVvkF9RD8/mD7GvPVIJ9GNuGD/DWeX3vkuepaIsOUzp03k4gdLiQt1EsWcBWEjjaPZnZCpQ==}
+  validate-package-exports@0.25.0:
+    resolution: {integrity: sha512-S1fqIaOn5VczBe0kYUh1ugycv+mKrV3C8Xc7PXGhWm9K0p6s+nu/6wk+th+vjHeS4hpBVuXFvvVZIgk4vSzwXw==}
     engines: {node: '>=20.17.0'}
     hasBin: true
 
@@ -3583,6 +3587,8 @@ snapshots:
       prettier: 3.8.3
 
   '@webdeveric/utils@0.76.0': {}
+
+  '@webdeveric/utils@0.79.0': {}
 
   abbrev@4.0.0: {}
 
@@ -5398,10 +5404,10 @@ snapshots:
 
   validate-npm-package-name@7.0.2: {}
 
-  validate-package-exports@0.23.0:
+  validate-package-exports@0.25.0:
     dependencies:
       '@npmcli/arborist': 9.4.3
-      '@webdeveric/utils': 0.76.0
+      '@webdeveric/utils': 0.79.0
       npm-packlist: 10.0.4
     transitivePeerDependencies:
       - supports-color
