@@ -4,7 +4,7 @@ import { comment } from '@webdeveric/utils/comment';
 import { build } from 'esbuild';
 import { clean } from 'esbuild-plugin-clean';
 
-import pkg from './package.json' assert { type: 'json' };
+import pkg from './package.json' with { type: 'json' };
 
 try {
   const results = await build({

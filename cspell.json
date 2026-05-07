@@ -1,6 +1,7 @@
 {
   "version": "0.2",
   "words": [
+    "blockExoticSubdeps",
     "colors",
     "corepack",
     "downlevel",
@@ -16,6 +17,7 @@
     "preinstall",
     "reporter",
     "typecheck",
+    "unrs-resolver",
     "vitest",
     "webdeveric",
     "xargs"
