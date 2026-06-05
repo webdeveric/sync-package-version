@@ -14,3 +14,4 @@ minimumReleaseAge: 2880 # 2 days
 
 minimumReleaseAgeExclude:
   - validate-package-exports@1.0.1
+  - commitlint-plugin-cspell@0.9.2
