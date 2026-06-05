@@ -9,7 +9,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/webdeveric/sync-package-version.git"
+    "url": "git+ssh://git@github.com/webdeveric/sync-package-version.git"
   },
   "bugs": {
     "url": "https://github.com/webdeveric/sync-package-version/issues"
