@@ -3,6 +3,7 @@
   "words": [
     "blockExoticSubdeps",
     "colors",
+    "commitlint",
     "corepack",
     "downlevel",
     "esbuild",
@@ -22,7 +23,5 @@
     "webdeveric",
     "xargs"
   ],
-  "ignorePaths": [
-    "node_modules/**"
-  ]
+  "ignorePaths": ["pnpm-lock.yaml", "node_modules/**"]
 }

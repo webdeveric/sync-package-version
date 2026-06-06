@@ -1,6 +1,6 @@
 {
   "name": "@webdeveric/sync-package-version",
-  "version": "0.7.0",
+  "version": "0.0.0-development",
   "description": "Sync your package.json version number across other files",
   "type": "module",
   "publishConfig": {
@@ -9,7 +9,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/webdeveric/sync-package-version.git"
+    "url": "git+ssh://git@github.com/webdeveric/sync-package-version.git"
   },
   "bugs": {
     "url": "https://github.com/webdeveric/sync-package-version/issues"
@@ -39,7 +39,8 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "lint": "eslint ./src ./*.mjs --fix",
-    "prepublishOnly": "pnpm typecheck && pnpm spellcheck && pnpm lint && pnpm coverage && pnpm build"
+    "prepublishOnly": "pnpm typecheck && pnpm spellcheck && pnpm lint && pnpm coverage && pnpm build",
+    "prepare": "husky"
   },
   "keywords": [
     "package.json",
@@ -58,11 +59,16 @@
     "semver": "^7.8.1"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^21.0.2",
+    "@commitlint/types": "^21.0.1",
     "@types/node": "^22.19.19",
     "@types/semver": "^7.7.1",
     "@vitest/coverage-v8": "^4.1.8",
     "@webdeveric/eslint-config-ts": "^0.12.0",
     "@webdeveric/prettier-config": "^0.4.0",
+    "commitlint": "^21.0.2",
+    "commitlint-plugin-cspell": "^0.9.2",
+    "conventional-changelog-conventionalcommits": "^9.3.1",
     "cspell": "^10.0.1",
     "esbuild": "^0.28.0",
     "esbuild-plugin-clean": "^1.0.1",
@@ -70,7 +76,10 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import": "^2.32.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.7",
     "prettier": "^3.8.3",
+    "semantic-release": "^25.0.3",
     "typescript": "^6.0.3",
     "validate-package-exports": "^1.0.1",
     "vitest": "^4.1.8"
